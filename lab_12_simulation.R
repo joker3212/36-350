@@ -7,3 +7,14 @@ generate_data = function(n, p) {
   result = list(m, responses)
   return(result)
 }
+
+model_select = function(covariates, responses, cutoff) {
+  init_model = lm(responses ~ covariates) 
+  reduced = summary(init_model)$coefficients[, 4] <= cutoff
+  reduced_model = lm(responses ~ covariates[, reduced])
+  if (nrow(reduced_cov) == 0) {
+    return(v)
+  }
+  return(summary(reduced_model)$coefficients[, 4])
+}
+
