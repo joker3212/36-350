@@ -28,13 +28,9 @@ run_simulation = function(n_trials, n, p, cutoff) {
   hist(p_values, xlab = "P Values")
 }
 
-ns = c(100, 1000,10000)
-ps = c(10, 20, 50)
-cutoff = .05
-for (n in ns) {
-  for (p in ps) {
-    run_simulation(n_trials = 10, n = n, p = p, cutoff = cutoff)
-  }
+make_plot(datapath) {
+  load(datapath)
+  hist(p_values)
 }
 
 
